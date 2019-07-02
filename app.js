@@ -50,11 +50,7 @@ function guessWord(id) {
   const value = guess.value;
   if (/^put your money where your mouth is/i.test(value)) {
     answerSection.innerText = `You've Won with a score of ${scoreCount}`;
-    grid.forEach(box => {
-      box.style.background = `none`;
-      box.style.transition = "3000ms ease-out";
-      box.style.border = `none`;
-    });
+    win();
   } else {
     scores();
     scoreEval();
@@ -68,4 +64,12 @@ function scores() {
 
 function lose() {
   alert(`you loose, the correct answer was ${answer}`);
+}
+function win() {
+  grid.forEach(box => {
+    box.removeEventListener(`click`, scoreChange);
+    box.style.background = `none`;
+    box.style.transition = "3000ms ease-out";
+    box.style.border = `none`;
+  });
 }
