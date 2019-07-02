@@ -1,39 +1,47 @@
-let grid = [...document.getElementById("container").children];
-let score = document.getElementById("score");
-let guess = document.getElementById("guess");
-let button = document.getElementById("button");
-let answerSection = document.getElementById("answer");
+let grid = [...document.getElementById(`container`).children];
+let score = document.getElementById(`score`);
+let guess = document.getElementById(`guess`);
+let button = document.getElementById(`button`);
+let answerSection = document.getElementById(`answer`);
 
-const answer = "Put your money where your mouth is";
+const answer = `Put your money where your mouth is`;
 
 let scoreCount = 25;
-// score.innerText.addEventListener("change", scoreEval);
+// score.innerText.addEventListener(`change`, scoreEval);
 function scoreEval() {
-  if (scoreCount <= 0) {
+  if (scoreCount < 0) {
     lose();
     grid.forEach(box => {
-      box.style.background = "none";
-      box.style.border = "none";
+      box.style.background = `none`;
+      box.style.border = `none`;
       score.innerText = `Score: 0`;
     });
 
-    answerSection.innerText = answer;
+    answerSection.innerText = `You lose! The answer was '${answer}'`;
   }
 }
 
 grid.forEach(box => {
-  box.addEventListener("click", gridUncover);
-  box.addEventListener("click", scoreChange);
+  box.addEventListener(`click`, gridUncover);
+  box.addEventListener(`click`, scoreChange);
 });
-button.addEventListener("click", guessWord);
+button.addEventListener(`click`, guessWord);
+
+guess.addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    button.click();
+  }
+});
+
 function gridUncover(id) {
-  id.target.style.background = "none";
-  id.target.style.border = "none";
-  id.target.className = "uncovered";
+  id.target.style.background = `none`;
+  id.target.style.border = `none`;
+  id.target.className = `uncovered`;
 }
 
 function scoreChange(id) {
-  id.target.removeEventListener("click", scoreChange);
+  id.target.removeEventListener(`click`, scoreChange);
   scores();
   scoreEval();
 }
@@ -41,8 +49,12 @@ function scoreChange(id) {
 function guessWord(id) {
   const value = guess.value;
   if (/^put your money where your mouth is/i.test(value)) {
-    alert("won");
-    answerSection.innerText = "You've Won";
+    answerSection.innerText = `You've Won with a score of ${scoreCount}`;
+    grid.forEach(box => {
+      box.style.background = `none`;
+      box.style.transition = "3000ms ease-out";
+      box.style.border = `none`;
+    });
   } else {
     scores();
     scoreEval();
