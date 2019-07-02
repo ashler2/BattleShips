@@ -42,7 +42,7 @@ main {
   margin-top: 65px;
 }
 
-.container {
+#container {
   margin-top: 65px;
   height: 500px;
   width: 500px;
@@ -55,7 +55,10 @@ main {
   justify-items: stretch;
   align-items: stretch;
   grid-template-areas: inherit;
-  background-image: url(" https://images.unsplash.com/photo-1511804472014-fa7b871cd6a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+  background-size: cover;
+  background-image: url("http://www.mrbartonmaths.com/resources/Catchphrase/Pictures/image9.gif");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 #a1,
 #a2,
@@ -84,13 +87,17 @@ main {
 #e5 {
   grid-area: inherit;
   border: 1px black solid;
-  background: red;
-}
-#a1 {
-  background: none;
+  background: rgb(75, 174, 219);
 }
 
 .input {
   position: relative;
   font-size: 2em;
+}
+
+.uncovered {
+  transition: 2000ms;
+  transform: rotate(720deg);
+  background: rgba(255, 255, 255, 0);
+  border: 0px;
 }

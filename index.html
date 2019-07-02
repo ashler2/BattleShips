@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./stylesheet.css" />
-    <script src="./app.js"></script>
+    <script src="./app.js" defer></script>
     <title>Document</title>
   </head>
   <header>
@@ -18,7 +18,7 @@
   </header>
 
   <main>
-    <section class="container">
+    <section id="container">
       <div id="a1"></div>
       <div id="a2"></div>
       <div id="a3"></div>
@@ -45,10 +45,11 @@
       <div id="e4"></div>
       <div id="e5"></div>
     </section>
+    <div><p id="score">Score: 25</p></div>
     <div class="input">
       <label>Guess:</label>
-      <input />
-      <button type="button">Submit</button>
+      <input id="guess" />
+      <button type="submit">Submit</button>
     </div>
   </main>
 </html>
