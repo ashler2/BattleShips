@@ -9,7 +9,7 @@ const answer = "Put your money where your mouth is";
 let scoreCount = 25;
 // score.innerText.addEventListener("change", scoreEval);
 function scoreEval() {
-  if (scoreCount < 0) {
+  if (scoreCount <= 0) {
     lose();
     grid.forEach(box => {
       box.style.background = "none";
