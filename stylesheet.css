@@ -40,6 +40,8 @@ main {
   width: 100%;
   opacity: 0.6; */
   margin-top: 65px;
+  width: 100%;
+  text-align: center;
 }
 
 #container {
